@@ -19,7 +19,7 @@ public class MineSweeper {
 			System.out.println("Welcome to Minesweeper");
 
 			// Request fieldSize from user
-			System.out.println("Please fill in the size of your playfield. (" + minFieldSize + "-" + maxFieldSize + ")");
+			System.out.println("Please fill in the size of your playfield. (" + minFieldSize + " - " + maxFieldSize + ")");
 			int proposedFieldSize = consoleIO.readInputInt();
 			while (proposedFieldSize < minFieldSize || proposedFieldSize > maxFieldSize) {
 				System.out.println("Please enter a valid value");
@@ -28,7 +28,7 @@ public class MineSweeper {
 			fieldSize = proposedFieldSize;
 
 			// Request bombChance from user
-			System.out.println("Now please fill in the chance that a field may contain a bomb. (" + minBombChance + "-"+ maxBombChance + ")");
+			System.out.println("Now please fill in the chance that a field may contain a bomb. (" + minBombChance + "% - "+ maxBombChance + "%)");
 			int proposedBombChance = consoleIO.readInputInt();
 			while (proposedBombChance < minBombChance || proposedBombChance > maxBombChance) {
 				System.out.println("Please enter a valid value.");
@@ -40,7 +40,7 @@ public class MineSweeper {
 			game = new Game(fieldSize, bombChance);
 			boolean gameOver = false;
 			while (!gameOver) {
-				System.out.println("Give the location you want to test or mark (*):");
+				System.out.println("Fill in the field that you want to test or flag (*):");
 				boolean invalidInput = true;
 				char xCoord = '?';
 				int yCoord = -1;
@@ -88,13 +88,13 @@ public class MineSweeper {
 				if(yCoord != -1 && xCoord != '?') {					
 					gameState = game.play(xCoord, yCoord, isMarking);
 				} else {
-					System.out.println("ERROR: One of the default inputvalues was not changed but did pass input sanitation.");
+					System.out.println("ERROR: One of the default input values was not changed but did pass input sanitation.");
 				}
 				
 				switch (gameState) {
 				case gameOver:
 					gameOver = true;
-					System.out.println("BOOM! You selected a bomb. Game over.");
+					System.out.println("BOOM! You hit a bomb. Game over.");
 					break;
 				case won:
 					gameOver = true;

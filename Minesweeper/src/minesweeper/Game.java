@@ -12,14 +12,15 @@ public class Game {
 		if(isMarking) {
 			// Check if all bombs are marked
 			mineField.markSquare(xCoord, yCoord);
-			if(mineField.allBombsMarked()) {
-				gameState = GameState.won;
-			}
 		} else {
 			// Check if square was bomb
 			if(mineField.chooseSquare(xCoord, yCoord)) {
 				gameState = GameState.gameOver;
 			}
+		}
+		
+		if(mineField.allBombsMarked()) {
+			gameState = GameState.won;
 		}
 		
 		mineField.print();
