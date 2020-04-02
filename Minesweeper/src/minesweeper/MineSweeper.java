@@ -7,7 +7,7 @@ public class MineSweeper {
 	private final static int minFieldSize = 5;
 	private final static int maxFieldSize = 20;
 
-	private final static int minBombChance = 5;
+	private final static int minBombChance = 10;
 	private final static int maxBombChance = 25;
 
 	public void start() {
@@ -40,12 +40,12 @@ public class MineSweeper {
 			game = new Game(fieldSize, bombChance);
 			boolean gameOver = false;
 			while (!gameOver) {
-				System.out.println("Fill in the field that you want to test or flag (*):");
 				boolean invalidInput = true;
 				char xCoord = '?';
 				int yCoord = -1;
 				boolean isMarking = false;
 				while(invalidInput) {
+					System.out.println("Fill in the field that you want to test or flag (*):");
 					String input = consoleIO.readInput();
 					
 					// Input validation
@@ -104,9 +104,9 @@ public class MineSweeper {
 				}
 			}		
 			
-			System.out.println("The game is over, but this does not have to be the end. Do you want to play another game? (Yes/No)");
 			boolean invalidInput = true;
 			while (invalidInput) {
+				System.out.println("The game is over, but this does not have to be the end. Do you want to play another game? (Yes/No)");
 				String input = consoleIO.readInput().toLowerCase();
 				if(input.equals("no")) {
 					quit = true;
